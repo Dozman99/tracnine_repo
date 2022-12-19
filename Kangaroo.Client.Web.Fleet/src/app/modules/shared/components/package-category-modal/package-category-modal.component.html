@@ -1,0 +1,7 @@
+<div class="container">
+  <ul class="h-100 justify-content-around">
+    <li class="nav-item my-4 fs-5 fw-bold" *ngFor='let category of productCategories' (click)='selectItem(category)'>
+      {{category?.description}}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,50 @@
+<div class="container delivery-type-container">
+  <div class="row">
+    <div class="col-md-4 boxes" *ngFor='let item of deliveryPrices.slice(0, 3)'>
+      <div class="delivery-type-card my-3">
+        <div class="delivery-type-card-header p-5">
+          <div class="dtch-title-small">{{item?.deliveryOptionAlias}}</div>
+          <div class="dtch-title-bold">{{item?.price | currency: '₦'}}</div>
+        </div>
+        <div class="delivery-type-card-body p-5">
+          <div class="pickup-to-destination">
+              <div><img src="../../../../assets/images/pickup_icon.svg" alt="pickup icon">{{pickUp}}</div>
+              <div><img src="../../../../assets/images/destination_icon.svg" alt="destination icon">{{dropOff}}</div>
+          </div>
+          <div class="delivery-details my-3">
+            <div class="delivery-eta d-flex my-2">
+              <div class="delivery-details-title">Delivery ETA</div>
+              <div class="delivery-details-value ms-auto">
+                <!-- 0 - 8 hours -->
+                {{item.eta}}
+              </div>
+              <!-- <div class="delivery-details-value ms-auto" *ngFor="let data of delivery">
+                {{data.deliveryEta}}
+              </div> -->
+            </div>
+            <div class="delivery-fee d-flex my-2">
+              <div class="delivery-details-title">Delivery Fee <span>(per min)</span></div>
+              <div class="delivery-details-value ms-auto">{{item?.price | currency: '₦'}}</div>
+            </div>
+            <div class="delivery-tax d-flex my-2">
+              <div class="delivery-details-title">Tax</div>
+              <div class="delivery-details-value ms-auto">7.5%</div>
+            </div>
+          </div>
+
+          <div class="coupon-form">
+            <mat-form-field appearance="outline" class="coupon">
+              <mat-label class='fs-5'>Coupon Code</mat-label>
+                <input matInput required type="text" [(ngModel)]='couponCode' name='couponCode'>
+                <button matSuffix mat-button class="mat-button-primary py-1 apply-button" type="submit">Apply</button>
+            </mat-form-field>
+          </div>
+
+          <div class="proceed-to-payment text-center">
+            <button mat-button class="mat-button-primary mx-auto py-1" (click)="submit(item)">Proceed to Payment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+.green-bg {
+    background: radial-gradient(133.58% 134.68% at 49.92% 184.68%, #62C6B7 0%, #2F626E 100%);
+    height: 56vh;
+    padding: 100px 0;
+  }
+  
+  ngx-charts-bar-vertical, ngx-charts-bar-vertical * {
+    width: 100% !important;
+  }
+
+  ::ng-deep .ngx-charts { 
+    text{
+        fill: #fff!important; 
+    }
+}
+ .transparent-chart ::ng-deep .ngx-charts { 
+    text{
+        fill: transparent!important; 
+    }
+}
+
+.bold-chart {
+    z-index: 1;
+}

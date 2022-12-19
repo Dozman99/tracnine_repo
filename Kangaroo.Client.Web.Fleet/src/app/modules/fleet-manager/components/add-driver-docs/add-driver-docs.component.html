@@ -1,0 +1,91 @@
+<div class='text-center mb-3'>
+  <h2>{{data.action | titlecase}} {{data.type | titlecase}} Document</h2>
+</div>
+
+<form class="mt-5" [formGroup]="docsForm">
+  <div class="row">
+      <!-- <div class="col-12 col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Doc ID</mat-label>
+              <input matInput type="text" placeholder="" formControlName='docId'>
+          </mat-form-field>
+      </div> -->
+      <div class="col-12 col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Doc Type</mat-label>
+              <mat-select formControlName='regulatoryDocumentTypeId'>
+                  <mat-option *ngFor="let docType of regulatoryDocumentTypes" [value]="docType?.id">
+                    {{docType?.description}}
+                  </mat-option>
+                </mat-select>
+          </mat-form-field>
+      </div>
+      <div class="col-12 col-md-6">
+          <mat-form-field appearance="outline" class="w-100">
+              <mat-label>File Name</mat-label>
+              <input matInput type="text" placeholder="" formControlName='fileName'>
+          </mat-form-field>
+      </div>
+      <div class="col-12 col-md-6">
+          <mat-form-field appearance="outline" class='w-100'>
+              <mat-label>Issue Date</mat-label>
+              <input matInput [matDatepicker]="picker" [max]="maxIssueDate" formControlName='issueDate' required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+      </div>
+      <div class="col-12 col-md-6">
+          <mat-form-field appearance="outline" class='w-100'>
+              <mat-label>Expiry Date</mat-label>
+              <input matInput [matDatepicker]="picker2" [min]="maxIssueDate" formControlName='expiryDate' required>
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+      </div>
+      <!-- <div class="col-12 col-md-6">
+          <mat-form-field appearance="outline" class='w-100'>
+              <mat-label>Date of Verification</mat-label>
+              <input matInput [matDatepicker]="picker3" formControlName='dateVerified' required>
+              <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+              <mat-datepicker #picker3></mat-datepicker>
+            </mat-form-field>
+      </div> -->
+      <div class="col-12">
+          <mat-form-field appearance="outline" class="w-100">
+              <mat-label>Narration</mat-label>
+              <textarea matInput type="text" placeholder="" formControlName='narration'></textarea>
+          </mat-form-field>
+      </div>
+      <div class='text-center mt-4'>
+          <label for="file" class='pointer rounded p-3 border border-2'>
+              <div>
+                  <img src="assets/images/folder.svg" alt="">
+              </div>
+              <div>
+                  <div class='mat-text-grey'>Upload Documents</div>
+                  <div class='mat-text-primary'>PNG, JPEG</div>
+              </div>
+              <div class="mt-4 text-center p-3 d-flex align-items-center justify-content-center fw-bold" [ngClass]="{'border rounded': uploadedFile}">
+                  {{uploadedFile?.name}}
+              </div>
+          </label>
+          <input id='file' type="file" hidden (change)="uploadFile($event)" accept=".png, .jpg, .jpeg">
+      </div>
+  </div>
+  <div class="mt-5 text-end">
+      <button [disabled]="docsForm.invalid || !uploadedFile" *ngIf="data.action === 'Add'" class='mat-button-primary' mat-flat-button (click)="createDoc()">Submit
+          <div class="text-center ms-3 mat-text-secondary d-inline-block" *ngIf="loading">
+              <div class="spinner-border spinner-border-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+      </button>
+      <button [disabled]="docsForm.invalid" *ngIf="data.action === 'Edit'" class='mat-button-primary' mat-flat-button (click)="updateDoc()">Submit
+          <div class="text-center ms-3 mat-text-secondary d-inline-block" *ngIf="loading">
+              <div class="spinner-border spinner-border-sm" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+      </button>
+  </div>
+</form>

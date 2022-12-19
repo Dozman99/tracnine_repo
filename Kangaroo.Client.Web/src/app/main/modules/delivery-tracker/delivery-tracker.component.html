@@ -1,0 +1,97 @@
+<div class="multi-colored-bg" [ngClass]='{"big-form": !showDetails}'>
+  <div class="blur py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+          <div class="card card-shadow rounded">
+            <div class="d-flex flex-column align-items-center py-5">
+              <h1 class='mt-5'>Delivery Tracker</h1>
+
+              <form ngForm #form='ngForm' (ngSubmit)='submit(form)' class='mt-4'>
+                <div class="text-center">
+                  <mat-form-field appearance='outline'>
+                    <mat-label class='font-weight-bold'>Tracking ID</mat-label>
+                    <input matInput type="text" required ngModel name='trackingId'>
+                  </mat-form-field>
+                </div>
+                <div class='danger text-danger text-center' *ngIf='!showDetails'>{{errorMessage}}</div>
+                <div class="text-center mt-4">
+                  <button [disabled]='form.invalid || loading' mat-button class="mat-button-primary mx-auto py-2 px-5" type="submit">
+                    <div *ngIf="loading" class="spinner-border text-light" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                    Track Delivery
+                  </button>
+                </div>
+              </form>
+
+            </div>
+
+            <div class='card d-flex flex-column align-items-center py-3 my-3 col-10 mx-auto' *ngIf='showDetails'>
+              <h1>Details</h1>
+<!--              <ul class='nav flex-column my-3 w-75'>-->
+<!--                <li class='d-flex justify-content-between mb-2'>-->
+<!--                  <div class="mat-text-grey">Tracking ID:</div>-->
+<!--                  <div class='font-weight-bold'>{{order?.trackingId || '-'}}</div>-->
+<!--                </li>-->
+<!--                <li class='d-flex justify-content-between mb-2'>-->
+<!--                  <div class="mat-text-grey">Pick-Up:</div>-->
+<!--                  <div>{{order?.deliveryDetail?.customerAddress1 || '-'}}</div>-->
+<!--                </li>-->
+<!--                <li class='d-flex justify-content-between mb-2'>-->
+<!--                  <div class="mat-text-grey">Drop-Off:</div>-->
+<!--                  <div>{{detail?.deliverToAddress1 || '-'}}</div>-->
+<!--                </li>-->
+<!--                <li class='d-flex justify-content-between mb-2'>-->
+<!--                  <div class="mat-text-grey">Category:</div>-->
+<!--                  <div>-</div>-->
+<!--                </li>-->
+<!--                <li class='d-flex justify-content-between mb-2'>-->
+<!--                  <div class="mat-text-grey">Type:</div>-->
+<!--                  <div>-</div>-->
+<!--                </li>-->
+<!--                <li class='d-flex justify-content-between mb-2'>-->
+<!--                <div class="mat-text-grey">Quantity:</div>-->
+<!--                <div>{{detail?.quantity || '-'}}</div>-->
+<!--              </li>-->
+<!--              </ul>-->
+
+              <div>
+                <div class=" tracking-info-box">
+                  <div *ngFor="let location of locations" class="tiny-border d-flex mx-2 p-3 my-3">
+<!--                    <img src="../../../../assets/images/pickup_icon.svg" alt="pickup icon">-->
+                    <div class="pt-2 pe-2"><mat-icon matSuffix class='mat-text-primary'>place</mat-icon></div>
+                    <div class='w-100'>
+                      <div class='d-flex justify-content-between mb-1'>
+                        <small class='mat-text-grey'>{{location.estimatedArrivalTime | date: 'longDate'}}</small>
+                        <small class='mat-text-grey'>{{location.estimatedArrivalTime | date: 'shortTime'}}</small>
+                      </div>
+                      <div class='d-flex flex-column'>
+                        <div><span class="mat-text-primary">Enroute</span> - <span>{{location.location}}</span></div>
+                        <small class='mat-text-grey'>{{location.note}}</small>
+                      </div>
+                    </div>
+                  </div>
+
+<!--                  <div class="d-flex">-->
+<!--                   <img src="../../../../assets/images/destination_icon.svg" alt="destination icon">&ndash;&gt;-->
+<!--                    <div class='w-100'>-->
+<!--                      <div class='d-flex justify-content-between mb-1'>-->
+<!--                        <small class='mat-text-grey'>Aug 31, 2021</small>-->
+<!--                        <small class='mat-text-grey'>8:34pm</small>-->
+<!--                      </div>-->
+<!--                      <div class='d-flex'>-->
+<!--                        <div class="mat-text-primary">Enroute -</div> 10 Wole Ogunjimi Street, Ikeja-->
+<!--                      </div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

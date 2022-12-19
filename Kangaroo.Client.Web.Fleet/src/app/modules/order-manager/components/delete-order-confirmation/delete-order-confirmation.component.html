@@ -1,0 +1,9 @@
+<div class="d-flex align-items-center h-100 justify-content-center">
+    <div class="d-flex flex-column">
+        <div class='text-center'>Are you sure you want to {{data?.action}} this order?</div>
+        <div class="mt-4 text-center">
+            <button mat-flat-button class='mat-button-grey-2' (click)="close()">Cancel</button>
+            <button mat-flat-button class='mat-button-danger ms-3' (click)="performAction()">Yes, {{data?.action |titlecase}} Order</button>
+        </div>
+    </div>
+</div>

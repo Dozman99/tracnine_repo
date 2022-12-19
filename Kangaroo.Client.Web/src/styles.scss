@@ -1,0 +1,464 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$kangaroo-app-primary: mat.define-palette(mat.$indigo-palette);
+$kangaroo-app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$kangaroo-app-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$kangaroo-app-theme: mat.define-light-theme((
+  color: (
+    primary: $kangaroo-app-primary,
+    accent: $kangaroo-app-accent,
+    warn: $kangaroo-app-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($kangaroo-app-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+$white: #fff;
+$bg-1: #FAFDFF;
+$bg-2: #EEF7F7;
+$bg-3: #F9F9FA;
+$bg-4: #E6F1FF;
+$primary-1: #62C6B7;
+/* $primary-2: #003F88;
+$primary-3: #00296B;
+$primary-accent-1: #99C8FF;
+$primary-accent-2: #148CFF; */
+$secondary-1: #2F626E;
+/* $secondary-2: #FDC500;
+$secondary-accent-1: #FFEF9E;
+$secondary-accent-2: #FFF5D1; */
+$danger: #D32027;
+$black-1: #333333;
+/* $text-black-2: #545454;
+$text-black-3: #525252;
+$text-black-4: #142850; */
+$grey-1: #8D9091;
+$grey-2: #EFEFEF;
+
+$font-size-12: 12px;
+$font-size-16: 16px;
+$font-weight-500: 500;
+$line-height-32: 32px;
+
+@font-face {
+  font-family: 'Futura Regular';
+  src: url('./assets/fonts/futura/futura\ medium\ bt.ttf');
+}
+@font-face {
+  font-family: 'Futura Bold';
+  src: url('./assets/fonts/futura/Futura\ Heavy\ font.ttf');
+}
+
+html, body { height: 100%; }
+body { margin: 0; }
+
+*:not(mat-icon) {
+  font-family: 'Futura Regular' !important;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Futura Bold' !important;
+}
+
+h1 {
+  font-size: 40px !important;
+}
+
+.mat-bg-1 {
+  background-color: $bg-1 !important;
+}
+
+.mat-bg-2 {
+  background-color: $bg-2 !important;
+}
+
+.mat-bg-3 {
+  background-color: $bg-3 !important;
+}
+
+.mat-bg-4 {
+  background-color: $bg-4 !important;
+}
+
+.mat-primary {
+  &-1 {
+    background-color: $primary-1 !important;
+  }
+  /* &-2 {
+    background-color: $primary-2 !important;
+  }
+  &-3 {
+    background-color: $primary-3 !important;
+  }
+  &-accent-1 {
+    background-color: $primary-accent-1 !important;
+  }
+  &-accent-2 {
+    background-color: $primary-accent-2 !important;
+  } */
+}
+
+.mat-secondary {
+  &-1 {
+    background-color: $secondary-1 !important;
+  }
+  /* &-2 {
+    background-color: $secondary-2 !important;
+  }
+  &-accent-1 {
+    background-color: $secondary-accent-1 !important;
+  }
+  &-accent-2 {
+    background-color: $secondary-accent-2 !important;
+  } */
+}
+
+.mat-grey {
+  &-1 {
+    background-color: $grey-1 !important;
+  }
+}
+
+.mat-text {
+  &-black-1 {
+    color: $black-1 !important;
+  }
+  /* &-black-2 {
+    color: $text-black-2 !important;
+  }
+  &-black-3 {
+    color: $text-black-3 !important;
+  } */
+  &-primary {
+    color: $primary-1 !important;
+  }
+  /* &-primary-2 {
+    color: $text-black-4 !important;
+  } */
+  &-secondary {
+    color: $secondary-1 !important;
+  }
+  &-grey {
+    color: $grey-1 !important;
+  }
+  &-white {
+    color: $white !important;
+  }
+}
+
+.mat-button {
+  border-radius: 6px !important;
+  &-primary {
+    color: $white !important;
+    background-color: $primary-1 !important;
+    font-size: 16px;
+  }
+  &-primary[disabled] {
+    color: $white !important;
+    background-color: $primary-1 !important;
+    opacity: 0.5 !important;
+    font-size: 16px;
+  }
+  &-primary-outline {
+    color: $primary-1 !important;
+    border: $primary-1 1px solid !important;
+    background-color: $white !important;
+    font-size: 16px;
+  }
+  &-primary-outline[disabled] {
+    color: $primary-1 !important;
+    border: $primary-1 1px solid !important;
+    background-color: $white !important;
+    opacity: 0.2;
+    font-size: 16px;
+  }
+  &-secondary {
+    color: $white !important;
+    background-color: $secondary-1 !important;
+    font-size: 16px;
+  }
+  /* &-secondary-accent-1 {
+    color: $primary-3 !important;
+    background-color: $secondary-accent-1 !important;
+    font-weight: bold !important;
+  }
+  &-secondary[disabled] {
+    color: $primary-accent-1 !important;
+    background-color: $secondary-accent-2 !important;
+    font-weight: bold !important;
+  }
+  &-secondary-outline {
+    color: $secondary-1 !important;
+    border: $secondary-1 1px solid !important;
+    background-color: $primary-3 !important;
+    font-weight: bold !important;
+  } */
+  &-grey {
+    color: $white !important;
+    background-color: $grey-1 !important;
+    font-size: 25px;
+  }
+  &-danger {
+    color: $white !important;
+    background-color: $danger !important;
+    font-size: 25px;
+  }
+  &-danger[disabled] {
+    color: $white !important;
+    background-color: $danger !important;
+    font-size: 25px;
+    opacity: 0.3;
+  }
+}
+
+.mat-bg-white {
+  background-color: $white;
+}
+
+.futura-bold {
+  font-family: 'Futura Bold' !important;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-outline-thick {
+    color: $grey-2;
+}
+.mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: $grey-2;
+}
+
+.delivery-calculator .mat-form-field-disabled .mat-form-field-label {
+  color: $black-1;
+  font-family: 'Futura Bold' !important;
+  font-weight: 700 !important;
+}
+
+.mat-form-field.mat-focused .mat-form-field-label {
+  color: $black-1;
+  font-family: 'Futura Bold' !important;
+  font-weight: 700 !important;
+}
+
+.mat-form-field-label {
+  color: $grey-1;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: $primary-1 !important;
+}
+.mat-radio-button.mat-accent .mat-radio-inner-circle,
+.mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple),
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple,
+.mat-radio-button.mat-accent:active .mat-radio-persistent-ripple,
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent .mat-ripple-element,
+.mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: $primary-1 !important;
+}
+
+input {
+  font-size: 16px !important;
+}
+
+.container-fluid {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+.main-container {
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.background-white {
+  background: #ffffff;
+}
+
+.multi-colored-bg {
+  background-image: url('../src/assets/images/multi-colored-bg.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  // height: -webkit-fill-available;
+}
+
+.blur {
+  backdrop-filter: blur(15px);
+  height: 100%;
+}
+
+.card-shadow {
+  box-shadow: 0px 4px 10px rgba(47, 98, 110, 0.1);
+}
+
+.card {
+  border-radius: 10px !important;
+}
+
+.tiny-border {
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 10px !important;
+}
+
+.tracking-info-box {
+  height: 300px;
+  overflow: auto;
+}
+
+@media screen and (max-width: 767px) {
+  .coupon{
+    width: 100% !important;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .boxes {
+    width: 49%;
+  }
+  .coupon{
+    width: 100% !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .order-summary {
+    padding: 40px !important;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .order-summary {
+    padding: 20px !important;
+  }
+
+  .order-summary .row .value {
+    text-align: end !important;
+  }
+
+  .order-summary .row .title {
+    text-align: left !important;
+  }
+
+  .order-summary .row .tracking-id-title {
+    text-align: left !important;
+  }
+
+  .order-summary .row .tracking-id-value {
+    text-align: end !important;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .payment-details {
+    padding-right: 2rem!important;
+    padding-left: 2em!important;
+  }
+
+  .payment-details-ul {
+    padding-right: 2rem!important;
+    padding-left: 2rem!important;
+  }
+  .delivery-type-card-body{
+    padding: 2rem!important;
+  }
+}
+
+// @media screen and (max-width: 390px) {
+//   .coupon{
+//     width: 19em;
+//   }
+// }
+
+// @media screen and (max-width: 380px) {
+//   .coupon{
+//     width: 18.5em;
+//   }
+// }
+
+@media screen and (max-width: 370px) {
+  .everyone {
+    font-size: 55px !important;
+  }
+}
+
+
+@media screen and (max-width: 330px) {
+  .payment-details {
+    padding-right: 1rem!important;
+    padding-left: 1rem!important;
+  }
+
+  .payment-details-ul {
+    padding-right: 1rem!important;
+    padding-left: 1rem!important;
+  }
+
+  .texts {
+    text-align: right;
+  }
+
+  .order-card {
+    padding-right: 2em!important;
+    padding-left: 2em!important;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  .delivery-type-card-body{
+    padding: 1.5em!important;
+  }
+
+  .order-card {
+    padding-right: 1.5em!important;
+    padding-left: 1.5em!important;
+  }
+
+  .payment-details {
+    padding-right: 1em!important;
+    padding-left: 1em!important;
+  }
+
+  .payment-details-ul {
+    padding-right: 1em!important;
+    padding-left: 1em!important;
+  }
+
+  .texts {
+    text-align: right;
+  }
+
+  .everyone {
+    font-size: 42px !important;
+  }
+  .base-category-title {
+    font-size: 35px !important;
+  }
+
+  .trac-row {
+    margin-right: calc(var(--bs-gutter-x) * -.5);
+    margin-left: calc(var(--bs-gutter-x) * -.5);
+  }
+}

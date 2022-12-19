@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <p>You are about to leave this page, all your delivery data would be lost.</p>
+      <p>Are you sure you want to continue?</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <div class="float-end">
+        <button type="button" mat-button class="mat-button-primary mx-1" (click)="shouldLeave(false)">No</button>
+        <button type="button" mat-button class="mat-button-danger mx-1" (click)="shouldLeave(true)">Yes</button>
+      </div>
+    </div>
+  </div>
+</div>

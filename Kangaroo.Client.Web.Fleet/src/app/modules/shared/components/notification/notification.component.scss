@@ -1,0 +1,19 @@
+.body {
+    right: -100%;
+    display: none;
+    visibility: hidden;
+    z-index: 99999;
+}
+
+@keyframes show {
+    to {
+        right: 0;
+        display: block;
+        visibility: visible;
+    }
+}
+.body.show {
+    animation: show 1s 0s ease-out;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}

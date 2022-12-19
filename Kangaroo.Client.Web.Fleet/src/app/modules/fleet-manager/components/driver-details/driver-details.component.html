@@ -1,0 +1,172 @@
+<div class="container h-100">
+  <div class="h-100">
+    <div class="h-100">
+      <div class="text-center">
+        <h2 class="'text-center mat-text-secondary">Driver Details</h2>
+      </div>
+      <div class="row my-3">
+        <div class="col-6">
+          <ul class="p-0">
+            <li class="row">
+              <div class="col-6 text-black-50">Last Name</div>
+              <div class="col-6 text-right">{{ driver?.surname }}</div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">First Name</div>
+              <div class="col-6 text-right">{{ driver?.firstName }}</div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Middle Name</div>
+              <div class="col-6 text-right">{{ driver?.middleName }}</div>
+            </li>
+            <!-- <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Title</div>
+              <div class="col-6 text-right">{{ driver?.title }}</div>
+            </li> -->
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Date of Birth</div>
+              <div class="col-6 text-right">
+                {{ driver?.doB | date: "short" }}
+              </div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Gender</div>
+              <div class="col-6 text-right">{{ driver?.gender }}</div>
+            </li>
+            <!-- <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Marital Status</div>
+              <div class="col-6 text-right">{{ driver?.maritalStatus }}</div>
+            </li> -->
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Phone 1</div>
+              <div class="col-6 text-right">{{ driver?.phone1 }}</div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Phone 2</div>
+              <div class="col-6 text-right">
+                {{ driver?.phone2 ? driver?.phone2 : "N/A" }}
+              </div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Email</div>
+              <div class="col-6 text-right">{{ driver?.email }}</div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Alternate Email</div>
+              <div class="col-6 text-right">
+                {{ driver?.alternateEmail ? driver?.alternateEmail : "N/A" }}
+              </div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Address 1</div>
+              <div class="col-6 text-right">
+                {{ driver?.address1 ? driver?.address1 : "N/A" }}
+              </div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Address 2</div>
+              <div class="col-6 text-right">
+                {{ driver?.address2 ? driver?.address2 : "N/A" }}
+              </div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">Country</div>
+              <div class="col-6 text-right">{{ driver?.countryName }}</div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">State</div>
+              <div class="col-6 text-right">{{ driver?.stateName }}</div>
+            </li>
+            <!-- <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">City</div>
+              <div class="col-6 text-right">{{ driver?.cityName }}</div>
+            </li>
+            <li class="row vehicle-row-li">
+              <div class="col-6 text-black-50">LGA</div>
+              <div class="col-6 text-right">{{ driver?.lgaName }}</div>
+            </li> -->
+          </ul>
+        </div>
+        <div class="col-6 text-center vehicle-menu-div">
+          <div>
+            <img
+              [src]="
+                driver?.photoUrl
+                  ? driver?.photoUrl
+                  : 'assets/images/fleet-management/empty-img.svg'
+              "
+              alt=""
+              class="w-100"
+            />
+          </div>
+          <button
+            mat-flat-button
+            [matMenuTriggerFor]="menu"
+            class="mat-button-primary mt-3 mb-3 vehicle-menu"
+            aria-label="Act on driver menu"
+          >
+            Driver Menu<mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="addDriverDocs()">
+              <mat-icon>folder</mat-icon>
+              <span>Add Driver Documents</span>
+            </button>
+            <button mat-menu-item (click)="editDriver()">
+              <mat-icon>edit</mat-icon>
+              <span>Edit Driver</span>
+            </button>
+            <button
+              *ngIf="!driver?.isActive"
+              mat-menu-item
+              (click)="reactivateDriver()"
+            >
+              <mat-icon>trending_up</mat-icon>
+              <span>Reactivate Driver</span>
+            </button>
+            <button
+              *ngIf="driver?.isActive"
+              mat-menu-item
+              (click)="deactivateDriver()"
+            >
+              <mat-icon>remove_circle</mat-icon>
+              <span>Deactivate Driver</span>
+            </button>
+            <button
+              *ngIf="!driver?.archived"
+              mat-menu-item
+              (click)="archiveDriver()"
+            >
+              <mat-icon>inventory_2</mat-icon>
+              <span>Archive Vehicle</span>
+            </button>
+            <button
+              *ngIf="driver?.archived"
+              mat-menu-item
+              (click)="restoreDriver()"
+            >
+              <mat-icon>restore</mat-icon>
+              <span>Restore Vehicle</span>
+            </button>
+            <button mat-menu-item (click)="deleteDriver()">
+              <mat-icon>delete</mat-icon>
+              <span>Delete Driver</span>
+            </button>
+          </mat-menu>
+          <!-- <div class='d-flex flex-column mt-3'>
+                        <button mat-flat-button class='mat-button-primary mb-3' (click)="addDriverDocs()">Add Driver Docs</button>
+                        <button mat-flat-button class='mat-button-primary mb-3' (click)="reactivateDriver()">Reactivate Driver</button>
+                        <button mat-flat-button class='mat-button-danger mb-3' (click)="deactivateDriver()">Deactivate Driver</button>
+                        <button mat-flat-button class='mat-button-danger mb-3' (click)='deleteDriver()'>Delete Driver</button>
+                    </div> -->
+        </div>
+      </div>
+
+      <div class='my-3'>
+        <button mat-flat-button class='mat-button-primary' (click)="viewDocs(driver, 'Driver')">
+          View Docs
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

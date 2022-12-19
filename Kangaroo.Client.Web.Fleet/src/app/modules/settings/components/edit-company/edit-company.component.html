@@ -1,0 +1,168 @@
+<h2 class="text-center mat-text-secondary">Edit Company</h2>
+
+<div class="d-flex align-items-center">
+    I want to edit:
+    <mat-form-field appearance="outline" class='ms-3'>
+        <mat-label>Select Edit Action</mat-label>
+        <mat-select (valueChange)="selectEditType($event)" [value]="0">
+            <mat-option [value]="0">
+                Company Details
+            </mat-option>
+            <mat-option [value]="1">
+                Company Banner
+            </mat-option>
+            <mat-option [value]="2">
+                Company Logo
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+</div>
+
+<mat-stepper [linear]='true' #stepper *ngIf='editType === 0'>
+    <mat-step [stepControl]="companyDetailsFormOne" label="">
+        <form class="mt-5" [formGroup]="companyDetailsFormOne">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>Short Name</mat-label>
+                        <input matInput placeholder="Name" type='text' formControlName='shortName' required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>Acronym</mat-label>
+                        <input matInput placeholder="Acronym" type='text' formControlName='acronym' required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>Email</mat-label>
+                        <input matInput placeholder="Email" type='email' [pattern]="emailRegex" formControlName='email' required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>Website</mat-label>
+                        <input matInput placeholder="Website" type='url' formControlName='website'>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>Description</mat-label>
+                        <textarea matInput placeholder="Description" type='text'
+                            formControlName='description'></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class='text-end mt-4'>
+                <button mat-flat-button class='mat-button-primary' matStepperNext>Next</button>
+            </div>
+
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="companyDetailsFormTwo" label=''>
+        <form class="mt-5" [formGroup]="companyDetailsFormTwo">
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>RC Number</mat-label>
+                        <input matInput placeholder="RC Number" type='text' formControlName='rcNumber' required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>TIN</mat-label>
+                        <input matInput placeholder="TIN" type='text' formControlName='tin' required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>TIN Registered Name</mat-label>
+                        <input matInput placeholder="TIN Registered Name" type='text'
+                            formControlName='tinRegisteredName' required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>Industry ID</mat-label>
+                        <input matInput placeholder="Industry ID" type='text' formControlName='industryId' required>
+                    </mat-form-field>
+                </div>
+                <div class="col-12 col-md-6">
+                    <mat-form-field appearance="outline" class="mb-3 w-100">
+                        <mat-label>Brief</mat-label>
+                        <textarea matInput placeholder="Brief" type='text' formControlName='brief'></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class='d-flex align-items-center justify-content-end mt-4'>
+                <button mat-flat-button class='mat-button-secondary' matStepperPrevious>Back</button>
+                <button mat-flat-button class='mat-button-primary px-5 ms-3' (click)="updateCompany()" type="button"
+                    [disabled]='companyDetailsFormOne.invalid || companyDetailsFormTwo.invalid'>
+                    Update Company
+                    <div class="text-center ms-3 mat-text-secondary d-inline-block" *ngIf="loading">
+                        <div class="spinner-border spinner-border-sm" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </button>
+            </div>
+
+        </form>
+    </mat-step>
+</mat-stepper>
+
+<div class='text-center mt-4' *ngIf='editType === 1'>
+    <label for="file" class='pointer rounded p-3 border border-2'>
+        <div>
+            <img src="assets/images/folder.svg" alt="">
+        </div>
+        <div>
+            <div class='mat-text-grey'>Upload Documents</div>
+            <div class='mat-text-primary'>PNG, JPEG</div>
+        </div>
+        <div class="mt-4 text-center p-3 d-flex align-items-center justify-content-center fw-bold"
+            [ngClass]="{'border rounded': uploadedLogoFile}">
+            {{uploadedBannerFile?.name}}
+        </div>
+    </label>
+    <input id='file' #BannerInput type="file" hidden (change)="uploadFile($event)" accept=".png, .jpg, .jpeg">
+    <div class="text-center mt-3">
+        <button mat-flat-button class="mat-button-primary" (click)='saveBannerFile()' [disabled]="!uploadedBannerFile">
+            Upload Banner
+            <div class="text-center ms-3 mat-text-secondary d-inline-block" *ngIf="loading">
+                <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </button>
+    </div>
+</div>
+<div class='text-center mt-4' *ngIf='editType === 2'>
+    <label for="file" class='pointer rounded p-3 border border-2'>
+        <div>
+            <img src="assets/images/folder.svg" alt="">
+        </div>
+        <div>
+            <div class='mat-text-grey'>Upload Documents</div>
+            <div class='mat-text-primary'>PNG, JPEG</div>
+        </div>
+        <div class="mt-4 text-center p-3 d-flex align-items-center justify-content-center fw-bold"
+            [ngClass]="{'border rounded': uploadedLogoFile}">
+            {{uploadedLogoFile?.name}}
+        </div>
+    </label>
+    <input id='file' #logoInput type="file" hidden (change)="uploadFile($event)" accept=".png, .jpg, .jpeg">
+    <div class="text-center mt-3">
+        <button mat-flat-button class="mat-button-primary" (click)='saveLogoFile()' [disabled]="!uploadedLogoFile">
+            Upload Logo
+            <div class="text-center ms-3 mat-text-secondary d-inline-block" *ngIf="loading">
+                <div class="spinner-border spinner-border-sm" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </button>
+    </div>
+</div>

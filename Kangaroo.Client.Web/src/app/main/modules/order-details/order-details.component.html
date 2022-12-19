@@ -1,0 +1,113 @@
+<div class="multi-colored-bg">
+  <div class="blur py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-sm-12 mt-2">
+          <div class="card px-3">
+            <ul class='nav flex-column my-3'>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Category:</div>
+                <div>{{productCategory?.description}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Type:</div>
+                <div>{{product?.item}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Quantity:</div>
+                <div>{{quantity}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Pick-Up:</div>
+                <div>{{pickUp}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Drop-Off:</div>
+                <div>{{dropOff}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Delivery Type:</div>
+                <div>{{deliveryType?.deliveryOptionAlias}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Coupon:</div>
+                <div>{{coupon ? coupon : '-'}}</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-8 col-sm-12 mt-2">
+          <div class="card px-5 order-card">
+            <h1 class='my-5'>Order Details</h1>
+            <form ngForm #form='ngForm' (ngSubmit)='submit(form)' class="pt-2 pb-4">
+              <div>
+                <h2 class='mb-4'>Sender Details</h2>
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field appearance="outline" class='w-100'>
+                    <mat-label class='fs-5'>First Name</mat-label>
+                    <input matInput required type="text" ngModel name='firstName'>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field appearance="outline" class='w-100'>
+                    <mat-label class='fs-5'>Last Name</mat-label>
+                    <input matInput required type="text" ngModel name='lastName'>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field appearance="outline" class='w-100'>
+                    <mat-label class='fs-5'>Email</mat-label>
+                    <input matInput type="email" ngModel name='email'>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field appearance="outline" class='w-100'>
+                    <mat-label class='fs-5'>Phone Number</mat-label>
+                    <input matInput minlength="11" maxlength="14" required type="text" ngModel name='phoneNumber'>
+                  </mat-form-field>
+                </div>
+              </div>
+              </div>
+              <div>
+                <h2 class='mb-4'>Receiver Details</h2>
+              <div class="row">
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field appearance="outline" class='w-100'>
+                    <mat-label class='fs-5'>Name</mat-label>
+                    <input matInput required type="text" ngModel name='receiverName'>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6 col-sm-12">
+                  <mat-form-field appearance="outline" class='w-100'>
+                    <mat-label class='fs-5'>Phone Number</mat-label>
+                    <input matInput minlength="11" maxlength="14" required type="text" ngModel name='receiverPhoneNumber'>
+                  </mat-form-field>
+                </div>
+                <div class="col-12">
+                  <mat-form-field appearance="outline" class='w-100'>
+                    <mat-label class='fs-5'>Note (optional)</mat-label>
+                    <textarea  matInput ngModel name='note' id="" cols="30" rows="10"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              </div>
+              <div class="text-center d-flex flex-column align-items-center">
+                <img src="../../../../assets/images/order-details-breadcrumbs.svg" alt="" class="my-4 w-50">
+                <button [disabled]='form.invalid || loading' mat-button class="mat-button-primary mx-auto py-2">
+                  <div *ngIf="loading" class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  Next
+                  <mat-icon class='mat-text-white'>
+                    chevron_right
+                    </mat-icon>
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

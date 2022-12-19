@@ -1,0 +1,18 @@
+.main {
+    height: 100vh;
+}
+
+.tokenInput {
+    border-radius: 6px;
+    border: rgb(184, 184, 184) 1px solid;
+    text-align: center;
+    font-size: 25px;
+    width: 60px;
+    height: 60px;
+    font-size: 25px;
+    margin-right: 25px;
+
+    &:focus {
+        outline-color: #62C6B7;
+    }
+}

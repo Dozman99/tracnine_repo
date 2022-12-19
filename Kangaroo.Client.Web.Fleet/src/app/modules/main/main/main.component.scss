@@ -1,0 +1,28 @@
+ul {
+    list-style: none;
+
+    li{
+        border-radius: 10px;
+        cursor: pointer;
+        padding-right: 123px !important;
+        white-space: nowrap;
+    }
+
+    li.active {
+        box-shadow: 0px 3.5px 5.5px rgba(0, 0, 0, 0.02);
+        .icon-container {
+            background: #62C6B7;
+        }
+        path {
+            fill: #fff;
+        }
+    }
+
+}
+
+.icon-container {
+    padding: 7px;
+    border-radius: 12px;
+    background: #fff;
+    margin-right: 20px;
+}

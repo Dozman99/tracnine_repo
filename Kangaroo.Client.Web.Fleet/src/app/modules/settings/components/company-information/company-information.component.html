@@ -1,0 +1,46 @@
+<div class="mt-5">
+  <div class="justify-content-between comp-info">
+    <div class=''>
+      <div class="fw-light fs-4">Company Information</div>
+    <p class="gray-font mt-2">View company profile, users, add new users and their roles</p>
+    </div>
+    <button mat-flat-button class='mat-button-primary' [matMenuTriggerFor]="menu">Company Menu <mat-icon>more_vert</mat-icon></button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)='action(item.code)' *ngFor="let item of detailsMenu" [ngClass]="{'d-none': (item.code === '2' && settingService.companyDetails?.isActive) || (item.code === '3' && !settingService.companyDetails?.isActive)}">{{item.name}}</button>
+    </mat-menu>
+    <!-- <button mat-flat-button class="mat-button-secondary" (click)="editComapny()">Edit Company</button> -->
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6 col-sm-12 my-2">
+      <div class="fw-bold">Company Name</div>
+      <div class="">{{settingService.companyDetails?.description ? settingService.companyDetails?.description : 'N/A'}}</div>
+    </div>
+    <div class="col-md-6 col-sm-12 my-2">
+      <div class="fw-bold">Email</div>
+      <div class="d-flex">
+        <div class="">{{settingService.companyDetails?.email ? settingService.companyDetails?.email : 'N/A'}}</div>
+        <!-- <div class="mx-3">
+          <span>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M7.37957 13.7191H6.66957L4.99957 11.9991H2.52957L1.99957 11.4991V9.07906L0.30957 7.35906V6.64906L1.99957 4.92906V2.49906L2.52957 1.99906H4.99957L6.66957 0.289062H7.37957L9.09957 1.99906H11.5296L12.0296 2.48906V4.92906L13.7396 6.64906V7.35906L11.9996 9.07906V11.4991L11.4996 11.9991H9.09957L7.37957 13.7191ZM5.72957 9.47906H6.43957L10.2096 5.70906L9.49957 4.99906L6.08957 8.41906L4.70957 7.03906L3.99957 7.74906L5.72957 9.47906Z" fill="#62C6B7"/>
+            </svg>
+          </span>
+          <span class="green-font">
+            Verified
+          </span>
+        </div> -->
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-12 my-2">
+      <div class="fw-bold">RC Number</div>
+      <div class="">{{settingService.companyDetails?.rcNumber ? settingService.companyDetails?.rcNumber : 'N/A'}}</div>
+    </div>
+    <!-- <div class="col-md-6 col-sm-12 my-2">
+      <mat-form-field appearance="outline" class="mb-3">
+        <mat-label>Phone Number</mat-label>
+        <input matInput placeholder="Phone Number" type='number'>
+      </mat-form-field>
+    </div> -->
+  </div>
+</div>

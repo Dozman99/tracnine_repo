@@ -1,0 +1,245 @@
+<div class="d-flex justify-content-center flex-column">
+        <div class='text-center'>
+            <h3><span class="fw-bold">Order:</span> {{order?.trackingId}}</h3>
+        </div>
+        <div class="container row">
+            <div class="col-12 col-md-6">
+                <div *ngIf='order?.isReturnOrder' class='d-flex align-items-center rounded py-2 alert mat-bg-2 mat-text-secondary fw-bold mb-3'>
+                    <mat-icon class=''>info</mat-icon>
+                    <div class="small ms-2">This is a returned order</div>
+                </div>
+                <div *ngIf='order?.details[0]?.isFragile' class='d-flex align-items-center rounded py-2 alert mat-danger-2 mat-text-danger-1 fw-bold mb-3'>
+                    <mat-icon class=''>info</mat-icon>
+                    <div class="small ms-2">This item is fragile</div>
+                </div>
+                <ul class='p-0'>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Customer ID
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold cancellationReason">
+                            {{order?.customerId ? order?.customerId : '-'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Delivery Option
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{order?.deliveryDetail?.deliveryOption}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Delivery Type
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{order?.deliveryDetail?.deliveryType}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Entry Date
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{order?.entryDate | date:'shortDate'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Psyment Method
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{order?.deliveryDetail?.paymentMode}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Amount
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{!order?.amount ? '₦0' : order?.amount | currency:'₦'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Net Amount
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{!order?.netAmount ? '₦0' : order?.netAmount | currency:'₦'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Percentage Discount
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{order?.percentDiscount + '%'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Coupon Amount
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{!order?.couponAmount ? '₦0' : order?.couponAmount | currency:'₦'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Coupon
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{order?.coupon}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Discount Amount
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{order?.discountAmount | currency:'₦'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Date of Completion
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{!order?.dateCompleted ? '-' : order?.dateCompleted | date:'shortDate'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Date of Payment
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{!order?.datePaid ? '-' : order?.datePaid | date:'shortDate'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Date of Cancellation
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold">
+                            {{!order?.dateCancelled ? '-' : order?.dateCancelled | date:'shortDate'}}
+                        </div>
+                    </li>
+                    <li class='row mb-3 justify-content-evenly'>
+                        <div class="col-12 col-md-6 text-black-50">
+                            Cancellation Reason
+                        </div>
+                        <div class="col-12 col-md-6 fw-bold cancellationReason">
+                            {{order?.cancellationReason ? order?.cancellationReason : '-'}}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class='mb-3'>
+                    <h3 class='mat-bg-4 alert mat-text-secondary'>Sender Details</h3>
+                    <div class='row'>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">First Name</label>
+                            <div>{{order?.deliveryDetail?.customerFirstName}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Last Name</label>
+                            <div>{{order?.deliveryDetail?.customerLastName}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Phone Number</label>
+                            <div>{{order?.deliveryDetail?.customerPhoneNumber}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Email Address</label>
+                            <div>{{order?.deliveryDetail?.customerEmail}}</div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="fw-bold text-black-50">Address 1</label>
+                            <div>{{order?.deliveryDetail?.customerAddress1 ? order?.deliveryDetail?.customerAddress1 : '-'}}</div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="fw-bold text-black-50">Address 2</label>
+                            <div>{{order?.deliveryDetail?.customerAddress2 ? order?.deliveryDetail?.customerAddress2 : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Address Nearest Bustop</label>
+                            <div>{{order?.deliveryDetail?.customerAddressNearestBustop ? order?.deliveryDetail?.customerAddressNearestBustop : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Address Nearest Landmark</label>
+                            <div>{{order?.deliveryDetail?.customerAddressNearestLandmark ? order?.deliveryDetail?.customerAddressNearestLandmark : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <label class="fw-bold text-black-50">Country</label>
+                            <div>{{order?.deliveryDetail?.customerAddressCountry ? order?.deliveryDetail?.customerAddressCountry : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <label class="fw-bold text-black-50">State</label>
+                            <div>{{order?.deliveryDetail?.customerAddressState ? order?.deliveryDetail?.customerAddressState : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <label class="fw-bold text-black-50">City</label>
+                            <div>{{order?.deliveryDetail?.customerCity ? order?.deliveryDetail?.customerCity : '-'}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class='mb-3'>
+                    <h3 class='mat-bg-4 alert mat-text-secondary'>Reciever Details</h3>
+                    <div class='row'>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">First Name</label>
+                            <div>{{order?.details[0]?.deliverToFirstName}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Last Name</label>
+                            <div>{{order?.details[0]?.deliverToLastName}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Phone Number</label>
+                            <div>{{order?.details[0]?.deliverToPhoneNumber}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Email Address</label>
+                            <div>{{order?.details[0]?.deliverToEmail}}</div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="fw-bold text-black-50">Address 1</label>
+                            <div>{{order?.details[0]?.deliverToAddress1 ? order?.details[0]?.deliverToAddress1 : '-'}}</div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="fw-bold text-black-50">Address 2</label>
+                            <div>{{order?.details[0]?.deliverToAddress2 ? order?.details[0]?.deliverToAddress2 : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Address Nearest Bustop</label>
+                            <div>{{order?.details[0]?.deliverToAddressNearestBustop ? order?.details[0]?.deliverToAddressNearestBustop : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-6 mb-3">
+                            <label class="fw-bold text-black-50">Address Nearest Landmark</label>
+                            <div>{{order?.details[0]?.deliverToAddressNearestLandmark ? order?.details[0]?.deliverToAddressNearestLandmark : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <label class="fw-bold text-black-50">Country</label>
+                            <div>{{order?.details[0]?.deliverToAddressCountry ? order?.details[0]?.deliverToAddressCountry : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <label class="fw-bold text-black-50">State</label>
+                            <div>{{order?.details[0]?.deliverToAddressState ? order?.details[0]?.deliverToAddressState : '-'}}</div>
+                        </div>
+                        <div class="col-12 col-md-4 mb-3">
+                            <label class="fw-bold text-black-50">City</label>
+                            <div>{{order?.details[0]?.deliverToCity ? order?.details[0]?.deliverToCity : '-'}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3 text-end">
+                    <button mat-flat-button class='mat-button-grey-2' (click)="confirmArchive()">Archive Order</button>
+                </div>
+                <div class="mb-3 text-end">
+                    <button mat-flat-button class='mat-button-danger' (click)="confirmDelete()">Delete Order</button>
+                </div>
+            </div>
+        </div>
+</div>

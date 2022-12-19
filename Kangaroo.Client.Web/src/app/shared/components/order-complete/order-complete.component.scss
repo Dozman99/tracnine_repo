@@ -1,0 +1,51 @@
+.main-title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 53px;
+  text-align: center;
+  color: #333333;
+}
+
+.main-sub-title {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  align-items: center;
+  color: #333333;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: #8D9091;
+}
+
+.value {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  display: flex;
+  align-items: center;
+  color: #333333;
+}
+
+.order-summary {
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  //width: 628px;
+  margin-right: auto;
+  margin-left: auto;
+  background: #FFFFFF;
+  border: 1px solid #EFEFEF;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.multi-colored-bg {
+  height: -webkit-fill-available;
+}

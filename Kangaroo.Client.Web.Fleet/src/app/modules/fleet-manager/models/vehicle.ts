@@ -1,0 +1,20 @@
+export interface Vehicle {
+  archived: boolean,
+  brandName: string,
+  capacity: number,
+  capacityUnitId: string,
+  color: string,
+  companyId: string,
+  description: string,
+  id: string,
+  isActive: boolean,
+  modelName: string,
+  numberOfTyres: number,
+  plateNumber: string,
+  seatCount: number,
+  type: number,
+  typeName: string,
+  vehicleBrandId: string,
+  vehicleModelId: string,
+  yearOfManufacture: number
+}

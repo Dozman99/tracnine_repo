@@ -1,0 +1,62 @@
+<div class='px-2 delivery-calculator'>
+  <!-- <h1 class='mb-5'>Calculate Delivery</h1> -->
+
+  <form class="w-100" #form='ngForm' (ngSubmit)='submit(form, search1.value, search2.value)'>
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class='w-100' [floatLabel]='"always"' (click)='openCategoryModal()'>
+          <mat-label class='fs-5 futura-bold'>Package Category</mat-label>
+          <input matInput required class='' placeholder="Choose Category" disabled [value]='productCategory?.description' ngModel name='category'>
+          <mat-icon matSuffix>expand_more</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class='w-100' [floatLabel]='"always"' (click)='openItemModal()'>
+          <mat-label class='fs-5 futura-bold'>Package Item</mat-label>
+          <div matPrefix class="me-3 futura-bold mat-text-primary">{{selectedItem?.quantity}}</div>
+          <input matInput required class='futura-bold' placeholder="Choose Type" disabled [value]='selectedItem?.item' ngModel name='item'>
+          <mat-icon matSuffix>expand_more</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class='w-100'>
+          <mat-label class='fs-5'>Pick-up</mat-label>
+          <input matInput required type="text" (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off" spellcheck="off" #search1 ngModel name='pick-up'>
+          <mat-icon matSuffix class='mat-text-primary'>place</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class='w-100'>
+          <mat-label class='fs-5'>Drop-off</mat-label>
+          <input matInput required type="text" (keydown.enter)="$event.preventDefault()" autocorrect="off" autocapitalize="off" spellcheck="off" #search2 ngModel name='drop-off'>
+          <mat-icon matSuffix class='mat-text-primary'>add_circle</mat-icon>
+        </mat-form-field>
+      </div>
+      <div class="col-md-6">
+        <mat-form-field appearance="outline" class='w-100'>
+          <mat-label class='fs-5'>Weight (kg)</mat-label>
+          <input matInput required type="text" ngModel name='weight'>
+        </mat-form-field>
+      </div>
+      <div class="col-6">
+        <mat-form-field appearance="outline" class='w-100'>
+          <mat-label class='fs-5'>Phone Number</mat-label>
+          <input matInput required type="tel" ngModel name='phoneNumber'>
+        </mat-form-field>
+      </div>
+      <div class="col-6 mb-5">
+          <mat-checkbox class='mat-text-primary fs-6' ngModel name='isFragile'>is this item fragile?</mat-checkbox>
+      </div>
+      <div class="col-12 text-center">
+        <!-- <button [disabled]='form.invalid || !productCategory?.name || !productItem?.item?.name' mat-button class="mat-button-primary mx-auto py-3" type="submit">Calculate Delivery Price</button> -->
+        <button [disabled]="loading || form.invalid || !productCategory?.id || !selectedItem?.id" mat-button class="mat-button-primary mx-auto" type="submit">
+          <div *ngIf="loading" class="spinner-border text-light" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          Proceed
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+

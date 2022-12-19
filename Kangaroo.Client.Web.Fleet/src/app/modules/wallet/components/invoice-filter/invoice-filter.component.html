@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row mt-5">
+    <div class="col-12">
+      <div class="title-text text-color-light-green fs-2">Filter By:</div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <form class="mt-5" [formGroup]="filterForm">
+
+        <div class="mb-3">
+          <div class="fw-bold mb-2">Date</div>
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" formControlName='startDate'>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="picker" placeholder="DD/MM/YYYY" formControlName='endDate'>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <div class="fw-bold mb-2">Status</div>
+          <div class="mb-3 d-flex flex-column">
+            <mat-checkbox class="example-margin">Delivered</mat-checkbox>
+            <mat-checkbox class="example-margin">Enroute</mat-checkbox>
+          </div>
+        </div>
+
+        <div class='text-center mt-4'>
+          <button mat-flat-button class='mat-button-primary'>Save</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class='mat-bg-2 h-100 d-flex align-items-center justify-content-center'>
+    <div>
+        <div class="d-flex align-items-center justify-content-center">
+            <img src="assets/images/logo.svg" alt="">
+        </div>
+        <div class='h-100 d-flex align-items-center justify-content-center flex-column mt-3' *ngIf='!accountIsActivated'>
+            <h2>Activating Account</h2>
+            <p class='text-black-50'>This might take a few seconds...</p>
+        </div>
+        <div class='h-100 d-flex align-items-center justify-content-center flex-column mt-3' *ngIf='accountIsActivated'>
+            <h2>Your account has been activated successfully</h2>
+            <p class='text-black-50'>Redirecting you to app...</p>
+        </div>
+    </div>
+</div>

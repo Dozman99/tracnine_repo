@@ -1,0 +1,58 @@
+.green {
+  color: #007C0C !important;
+  background-color: #DCFDE5;
+}
+
+.red {
+  color: #E48200 !important;
+  background-color: #FDEFDC;
+}
+
+.blue {
+  color: #0025E5 !important;
+  background-color: #DCE5FD;
+}
+
+.example-container {
+max-width: 100%;
+overflow: auto;
+}
+
+table.mat-table {
+border-spacing: 0;
+width: 100%;
+}
+
+td.mat-column-star {
+width: 20px;
+padding-right: 8px;
+}
+th.mat-column-position, td.mat-column-position {
+padding-left: 8px;
+}
+.mat-table-sticky-border-elem-left {
+border-right: 1px solid #e0e0e0;
+}
+.mat-table-sticky-border-elem-right {
+border-left: 1px solid #e0e0e0;
+}
+td.mat-cell:last-of-type {
+  padding: 0 7px;
+}
+tr.mat-row, tr.mat-footer-row {
+  text-align: center;
+}
+td.mat-cell {
+padding: 4px;
+}
+.mat-form-field {
+width: 100%
+}
+::ng-deep th.mat-header-cell {
+text-align: center !important;
+justify-content: center !important;
+font-size: 14px;
+}
+::ng-deep .mat-sort-header-container {
+  justify-content: center !important;
+}

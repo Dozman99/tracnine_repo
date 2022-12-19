@@ -1,0 +1,99 @@
+<div class="multi-colored-bg">
+  <div class="blur py-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 offset-md-3">
+          <div class="card px-5">
+            <ul class='nav flex-column my-5 rounded border px-4 py-3'>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Category:</div>
+                <div>{{category}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Type:</div>
+                <div>{{type}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Quantity:</div>
+                <div>{{orderDetail?.quantity}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Pick-Up:</div>
+                <div>{{pickUp}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Drop-Off:</div>
+                <div>{{dropOff}}</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Delivery Type:</div>
+                <div>Same Day Delivery</div>
+              </li>
+              <li class='d-flex justify-content-between mb-2'>
+                <div class="mat-text-grey">Coupon:</div>
+                <div>No</div>
+              </li>
+            </ul>
+            <div class='mt-4 text-center'>
+              <h1>Payments</h1>
+              <div class="text-center my-5">
+                <button [disabled]="loading"  (click)="savePayment()" mat-button class="mat-button-primary mx-auto py-2 px-5" type="button">
+                  <div *ngIf="loading" class="spinner-border text-light" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  Make Payment
+                </button>
+              </div>
+<!--              <div class="my-5">Please select a payment option to complete your order</div>-->
+
+<!--              <ul class='nav flex-column my-3 mt-4'>-->
+<!--                <li class="d-flex justify-content-between align-items-center mb-3">-->
+<!--                  <div class="d-flex align-items-center">-->
+<!--                    <div>-->
+<!--                      <img src="../../../../../assets/images/debit-card.svg" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="ms-3 mat-text-grey fs-5">Card Payment</div>-->
+<!--                  </div>-->
+<!--                  <div>-->
+<!--                    <mat-icon class='mat-text-primary'>-->
+<!--                      chevron_right-->
+<!--                    </mat-icon>-->
+<!--                  </div>-->
+<!--                </li>-->
+<!--                <li class="d-flex justify-content-between align-items-center mb-3" [routerLink]='["bank-payment"]'>-->
+<!--                  <div class="d-flex align-items-center">-->
+<!--                    <div>-->
+<!--                      <img src="../../../../../assets/images/bank.svg" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="ms-3 mat-text-grey fs-5">Bank Payment</div>-->
+<!--                  </div>-->
+<!--                  <div>-->
+<!--                    <mat-icon class='mat-text-primary'>-->
+<!--                      chevron_right-->
+<!--                    </mat-icon>-->
+<!--                  </div>-->
+<!--                </li>-->
+<!--                <li class="d-flex justify-content-between align-items-center mb-3" [routerLink]='["ussd-payment"]'>-->
+<!--                  <div class="d-flex align-items-center">-->
+<!--                    <div>-->
+<!--                      <img src="../../../../../assets/images/phone.svg" alt="">-->
+<!--                    </div>-->
+<!--                    <div class="ms-3 mat-text-grey fs-5">USSD Payment</div>-->
+<!--                  </div>-->
+<!--                  <div>-->
+<!--                    <mat-icon class='mat-text-primary'>-->
+<!--                      chevron_right-->
+<!--                    </mat-icon>-->
+<!--                  </div>-->
+<!--                </li>-->
+<!--              </ul>-->
+            </div>
+            <div class="my-4 text-center">
+              <img class="img-fluid" src="../../../../../assets/images/payments-breadcrumbs.svg" alt="">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

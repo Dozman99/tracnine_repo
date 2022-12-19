@@ -1,0 +1,83 @@
+<div class="multi-colored-bg">
+  <div class="blur">
+    <div class="container">
+      <div class="row text-center my-3">
+        <div class="col">
+          <div class="main-title">
+            Order Completed
+          </div>
+          <div class="main-sub-title">
+            A driver would call you soon
+          </div>
+          <div class="order-completed-icon">
+            <img src="assets/images/order_completed_icon.svg" alt="Order completed icon">
+          </div>
+        </div>
+      </div>
+
+      <div class="order-summary col-md-8  mb-5">
+        <div class="row text-center align-items-center">
+          <div class="col-md-8 col-sm-12">
+            <div class="tracking-id d-flex my-2">
+              <div class="tracking-id-title">Tracking ID:</div>
+              <div class="tracking-id-value ms-auto">{{trackingId}}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Total Amount</div>
+              <div class="value ms-auto">₦{{totalAmount | number }}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Delivery Pin:</div>
+              <div class="value ms-auto">{{deliveryPin}}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Category:</div>
+              <div class="value ms-auto">{{category}}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Type:</div>
+              <div class="value ms-auto">{{type}}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Quantity:</div>
+              <div class="value ms-auto">{{quantity}}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Pick-Up:</div>
+              <div class="value ms-auto">{{pickUp}}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Drop-Off:</div>
+              <div class="value ms-auto">{{dropOff}}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Delivery Type:</div>
+              <div class="value ms-auto">{{deliveryType}}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Discount:</div>
+              <div class="value ms-auto">{{discount}}</div>
+            </div>
+
+            <div class=" d-flex my-2">
+              <div class="title">Transaction Reference:</div>
+              <div class="value tracRef ms-auto">{{transactionReference}}</div>
+            </div>
+          </div>
+          <div class="col-md-4 col-sm-12">
+          <button mat-button class="mat-button-primary mx-auto py-1" (click)="submit()">Track Delivery</button>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
